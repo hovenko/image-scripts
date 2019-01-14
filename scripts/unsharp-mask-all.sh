@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-IPS="
-"
+set -e
+
+IFS=$'\n'
 
 CWD=`pwd`
 
@@ -10,13 +11,7 @@ IN="$CWD"
 
 cd "$IN" || exit 1
 
-if [ -d "$OUT" ]
-then
-    echo "Output directory already exists!"
-    exit 1
-fi
-
-mkdir "$OUT"
+mkdir -p "$OUT"
 
 for i in `find . -iname "*.jpg"`
 do
